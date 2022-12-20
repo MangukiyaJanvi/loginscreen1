@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage2 extends StatefulWidget {
+  const HomePage2({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage2> createState() => _HomePage2State();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePage2State extends State<HomePage2> {
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
   String email="";
@@ -26,6 +26,11 @@ class _HomePageState extends State<HomePage> {
             children: [
               TextField(
                 controller: txtEmail,
+                onChanged: (Value){
+                  setState(() {
+                    email = Value;
+                  });
+                },
                 decoration: InputDecoration(
                   suffixIcon: Icon(Icons.mail_outlined),
                   label: Text("Email"),
@@ -38,6 +43,11 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 5),
               TextField(
                 controller: txtPassword,
+                onChanged: (Value){
+                  setState(() {
+                    password = Value;
+                  });
+                },
                 decoration: InputDecoration(
                   suffixIcon: Icon(Icons.remove_red_eye_outlined),
                   label: Text("Password"),
@@ -48,26 +58,16 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 10),
-
-                InkWell(
-                  onTap: (){
-                    setState(() {
-                      email=txtEmail.text;
-                      password=txtPassword.text;
-                    });
-                    print("$email $password");
-                  },
-                  child: Container(
-                    height: 30,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.lightBlue,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text("Submit"),
-                  ),
+              Container(
+                height: 30,
+                width: 60,
+                decoration: BoxDecoration(
+                  color: Colors.lightBlue,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
+                alignment: Alignment.center,
+                child: Text("Submit"),
+              ),
               SizedBox(height: 5),
               Text("Email = $email"),
               SizedBox(height: 5),
